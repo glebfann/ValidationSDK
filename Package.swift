@@ -13,11 +13,13 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "ValidationSDK"
+            name: "ValidationSDK",
+            path: "Sources"
         ),
         .testTarget(
             name: "ValidationSDKTests",
-            dependencies: ["ValidationSDK"]
+            dependencies: ["ValidationSDK"],
+            path: "Tests"
         ),
     ]
 )
