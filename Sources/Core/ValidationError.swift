@@ -6,3 +6,9 @@ open class ValidationError: Error, @unchecked Sendable {
     self.message = message
   }
 }
+
+extension ValidationError: Equatable {
+  public static func == (lhs: ValidationError, rhs: ValidationError) -> Bool {
+    lhs.message == rhs.message
+  }
+}
