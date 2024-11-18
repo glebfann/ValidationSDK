@@ -2,7 +2,7 @@ public struct AnyValidator<Value>: Validator {
   @usableFromInline
   internal let isValid: (Value) throws -> Bool
   
-  init(isValid: @escaping (Value) throws -> Bool) {
+  public init(isValid: @escaping (Value) throws -> Bool) {
     self.isValid = isValid
   }
   

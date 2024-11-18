@@ -5,23 +5,29 @@ public protocol Validator {
 
 extension Validator {
   @discardableResult
-  func validate<Tag>(_ value: Value) throws(ValidationError) -> Valid<Tag, Value> {
+  public func validate<Tag>(
+    _ value: Value,
+    tag: Tag.Type
+  ) throws(ValidationError) -> Valid<Tag, Value> {
     switch validate(value) {
     case .success:
-      return Valid(value)
+      return Valid<Tag, Value>(value)
     case let .failure(error):
       throw error
     }
   }
   
-  func validate<Tag>(_ value: Value) -> Result<Valid<Tag, Value>, ValidationError> {
+  public func validate<Tag>(
+    _ value: Value,
+    tag: Tag.Type
+  ) -> Result<Valid<Tag, Value>, ValidationError> {
     switch validate(value) {
-    case .success: .success(Valid(value))
+    case .success: .success(Valid<Tag, Value>(value))
     case let .failure(error): .failure(error)
     }
   }
 
-  func validate(_ value: Value) -> Bool {
+  public func validate(_ value: Value) -> Bool {
     switch validate(value) {
     case .success: true
     case .failure: false

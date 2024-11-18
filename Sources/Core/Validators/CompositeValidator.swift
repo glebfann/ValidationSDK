@@ -12,7 +12,6 @@ public struct CompositeValidator<Value>: Validator {
       case let .failure(error): return .failure(error)
       }
     }
-    
     return .success(())
   }
 }
