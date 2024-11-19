@@ -1,5 +1,5 @@
 import Testing
-@testable import ValidationSDK
+import ValidationSDK
 
 @Suite
 struct NonEmptyStringValidatorTests {

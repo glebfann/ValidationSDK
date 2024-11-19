@@ -1,4 +1,5 @@
 public struct NonEmptyStringValidator: Validator {
+  public init() {}
   public func validate(_ value: String) -> Result<Void, ValidationError> {
     if value.isEmpty {
       .failure(.emptyString)
