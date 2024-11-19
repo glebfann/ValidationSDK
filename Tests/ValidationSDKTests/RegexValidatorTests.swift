@@ -8,44 +8,44 @@ struct RegexValidatorTests {
   private let emptyStringValidator = RegexValidator(pattern: "^$")
 
   @Test
-  func test_FailsOnInvalidPattern() {
+  func test_failsOnInvalidPattern() {
     let validator = RegexValidator(pattern: "[")
     let result = validator.validate("test")
     result.expectError(ValidationError(message: "Invalid regex pattern"))
   }
 
   @Test
-  func test_MatchesDigitsOnly() {
+  func test_matchesDigitsOnly() {
     let result = digitsValidator.validate("123")
     result.expectSuccess()
   }
 
   @Test
-  func test_FailsOnNonDigits() {
+  func test_failsOnNonDigits() {
     let result = digitsValidator.validate("abc")
     result.expectError(validationFailedError)
   }
 
   @Test
-  func test_MatchesExactLength() {
+  func test_matchesExactLength() {
     let result = exactLengthValidator.validate("abc")
     result.expectSuccess()
   }
 
   @Test
-  func test_FailsOnWrongLength() {
+  func test_failsOnWrongLength() {
     let result = exactLengthValidator.validate("abcd")
     result.expectError(validationFailedError)
   }
 
   @Test
-  func test_MatchesEmptyString() {
+  func test_matchesEmptyString() {
     let result = emptyStringValidator.validate("")
     result.expectSuccess()
   }
 
   @Test
-  func test_FailsOnNonEmptyString() {
+  func test_failsOnNonEmptyString() {
     let result = emptyStringValidator.validate("1")
     result.expectError(validationFailedError)
   }
