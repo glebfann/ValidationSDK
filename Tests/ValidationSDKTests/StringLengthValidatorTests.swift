@@ -2,9 +2,9 @@ import Testing
 import ValidationSDK
 
 @Suite
-struct StringLengthValidatorTests {
-  private let validator = StringLengthValidator(minLength: 2, maxLength: 5)
-  private let defaultValidator = StringLengthValidator()
+struct LengthRangeValidatorTests {
+  private let validator = LengthRangeValidator(minLength: 2, maxLength: 5)
+  private let defaultValidator = LengthRangeValidator()
 
   @Test
   func test_validStringLength() {

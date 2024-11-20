@@ -4,19 +4,6 @@ public protocol Validator {
 }
 
 extension Validator {
-  @discardableResult
-  public func validate<Tag>(
-    _ value: Value,
-    tag: Tag.Type
-  ) throws(ValidationError) -> Valid<Tag, Value> {
-    switch validate(value) {
-    case .success:
-      return Valid<Tag, Value>(value)
-    case let .failure(error):
-      throw error
-    }
-  }
-  
   public func validate<Tag>(
     _ value: Value,
     tag: Tag.Type

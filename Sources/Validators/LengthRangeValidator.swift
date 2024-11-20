@@ -1,4 +1,4 @@
-public struct StringLengthValidator: Validator {
+public struct LengthRangeValidator: Validator {
   private let minLength: Int
   private let maxLength: Int
 
