@@ -15,6 +15,7 @@ public struct AnyValidator<Value>: Validator {
     if (try? _isValid(value)) == true {
       .success(())
     } else {
+      // TODO: specialize error
       .failure(.default)
     }
   }
