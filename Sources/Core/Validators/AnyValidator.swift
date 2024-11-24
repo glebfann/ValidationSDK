@@ -1,17 +1,28 @@
 public struct AnyValidator<Value>: Validator {
   @usableFromInline
-  internal let isValid: (Value) throws -> Bool
-  
+  internal let _isValid: (Value) throws -> Bool
+
   public init(isValid: @escaping (Value) throws -> Bool) {
-    self.isValid = isValid
+    _isValid = isValid
   }
-  
+
+  public init<V: Validator>(_ validator: V) where V.Value == Value {
+    _isValid = validator.validate
+  }
+
   @inlinable
   public func validate(_ value: Value) -> Result<Void, ValidationError> {
-    if (try? isValid(value)) == true {
+    if (try? _isValid(value)) == true {
       .success(())
     } else {
       .failure(.default)
     }
+  }
+}
+
+extension Validator {
+  @inlinable @inline(__always)
+  public func eraseToAnyValidator() -> AnyValidator<Value> {
+    AnyValidator(self)
   }
 }
