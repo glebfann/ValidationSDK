@@ -4,27 +4,31 @@
 import PackageDescription
 
 let package = Package(
-    name: "ValidationSDK",
-    products: [
-        .library(
-            name: "ValidationSDK",
-            targets: ["ValidationSDK", "ValidationUI"]
-        )
-    ],
-    targets: [
-        .target(
-            name: "ValidationSDK",
-            path: "ValidationSDK"
-        ),
-        .target(
-            name: "ValidationUI",
-            dependencies: ["ValidationSDK"],
-            path: "ValidationUI"
-        ),
-        .testTarget(
-            name: "ValidationSDKTests",
-            dependencies: ["ValidationSDK"],
-            path: "Tests"
-        ),
-    ]
+  name: "ValidationSDK",
+  platforms: [
+    .iOS(.v14),
+    .macOS(.v11)
+  ],
+  products: [
+    .library(
+      name: "ValidationSDK",
+      targets: ["ValidationSDK", "ValidationUI"]
+    )
+  ],
+  targets: [
+    .target(
+      name: "ValidationSDK",
+      path: "ValidationSDK"
+    ),
+    .target(
+      name: "ValidationUI",
+      dependencies: ["ValidationSDK"],
+      path: "ValidationUI"
+    ),
+    .testTarget(
+      name: "ValidationSDKTests",
+      dependencies: ["ValidationSDK"],
+      path: "Tests"
+    ),
+  ]
 )
