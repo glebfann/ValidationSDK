@@ -8,13 +8,18 @@ let package = Package(
     products: [
         .library(
             name: "ValidationSDK",
-            targets: ["ValidationSDK"]
+            targets: ["ValidationSDK", "ValidationUI"]
         )
     ],
     targets: [
         .target(
             name: "ValidationSDK",
-            path: "Sources"
+            path: "ValidationSDK"
+        ),
+        .target(
+            name: "ValidationUI",
+            dependencies: ["ValidationSDK"],
+            path: "ValidationUI"
         ),
         .testTarget(
             name: "ValidationSDKTests",
