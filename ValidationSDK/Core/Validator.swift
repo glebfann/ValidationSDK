@@ -21,7 +21,6 @@ extension Validator {
     }
   }
 
-
   @_disfavoredOverload
   @discardableResult
   public func validate<Tag>(
