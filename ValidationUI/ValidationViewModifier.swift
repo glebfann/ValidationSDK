@@ -1,5 +1,6 @@
 import SwiftUI
 import ValidationSDK
+import FunctionalPrimitives
 
 internal struct ValidationViewModifier<Value: Equatable>: ViewModifier {
   @Binding private var value: Value
@@ -18,7 +19,7 @@ internal struct ValidationViewModifier<Value: Equatable>: ViewModifier {
   
   func body(content: Content) -> some View {
     if #available(iOS 17.0, macOS 14.0, *) {
-      content.onChange(of: value, initial: false, augment(validate))
+      content.onChange(of: value, initial: false, augment(validate, param: .second))
     } else {
       content.onChange(of: value, perform: validate)
     }
@@ -30,12 +31,5 @@ internal struct ValidationViewModifier<Value: Equatable>: ViewModifier {
     case .success: state = .valid
     case let .failure(error): state = .invalid(error)
     }
-  }
-}
-
-// TODO: Move to FunctionalPrimitives
-private func augment<Value>(_ f: @escaping (Value) -> Void) -> (Value, Value) -> Void {
-  return { arg1, arg2 in
-    f(arg2)
   }
 }

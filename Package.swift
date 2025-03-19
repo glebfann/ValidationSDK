@@ -15,6 +15,9 @@ let package = Package(
       targets: ["ValidationSDK", "ValidationUI"]
     )
   ],
+  dependencies: [
+    .package(url: "https://github.com/glebfann/FunctionalPrimitives.git", from: "1.1.0"),
+  ],
   targets: [
     .target(
       name: "ValidationSDK",
@@ -22,7 +25,7 @@ let package = Package(
     ),
     .target(
       name: "ValidationUI",
-      dependencies: ["ValidationSDK"],
+      dependencies: ["ValidationSDK", "FunctionalPrimitives"],
       path: "ValidationUI"
     ),
     .testTarget(

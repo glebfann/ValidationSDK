@@ -1,0 +1,15 @@
+{
+  "originHash" : "f168f9d850685bd5d9d330368eb8f7a12a094039f3f6b8d8ff9becc0cdbe8a96",
+  "pins" : [
+    {
+      "identity" : "functionalprimitives",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/glebfann/FunctionalPrimitives.git",
+      "state" : {
+        "revision" : "6c2d5fc0d006a5f48ff4b35f3f7891bfe7621ced",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
